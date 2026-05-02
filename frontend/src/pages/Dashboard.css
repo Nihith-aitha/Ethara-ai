@@ -1,0 +1,104 @@
+/* Page */
+.dashboard {
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  background-color: #98a1a9;
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-btn {
+  background-color: #a96e6e;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Form */
+.task-form {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.title-input {
+  flex: 1;
+}
+
+.desc-input {
+  flex: 2;
+}
+
+.add-btn {
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Task Card */
+.task-card {
+  background: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.task-desc {
+  color: #555;
+}
+
+/* Status */
+.status-pending {
+  color: orange;
+  font-weight: bold;
+}
+
+.status-completed {
+  color: green;
+  font-weight: bold;
+}
+
+/* Buttons */
+.btn-group {
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.toggle-btn {
+  background-color: #2196F3;
+  color: white;
+}
+
+.edit-btn {
+  background-color: #ffc107;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}

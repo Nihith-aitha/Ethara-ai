@@ -19,7 +19,7 @@ export default function Dashboard() {
 
   // FETCH TASKS
   const fetchTasks = async () => {
-    const res = await axios.get("https://ethara-ai-production-87f8.up.railway.app/api/tasks", {
+    const res = await axios.get("https://ethara-ai-production-cac0.up.railway.app/api/tasks", {
       headers: {
         Authorization: "Bearer " + token
       }
@@ -32,7 +32,7 @@ export default function Dashboard() {
     e.preventDefault();
 
     await axios.post(
-      "https://ethara-ai-production-87f8.up.railway.app/api/tasks",
+      "https://ethara-ai-production-cac0.up.railway.app/api/tasks",
       { title, description, assignedTo: "Nihith" },
       {
         headers: {
@@ -49,7 +49,7 @@ export default function Dashboard() {
   //DELETE TASK
   const handleDelete = async (id) => {
     await axios.delete(
-      `https://ethara-ai-production-87f8.up.railway.app/api/tasks/${id}`,
+      `https://ethara-ai-production-cac0.up.railway.app/api/tasks/${id}`,
       {
         headers: {
           Authorization: "Bearer " + token
@@ -65,7 +65,7 @@ export default function Dashboard() {
       currentStatus === "Pending" ? "Completed" : "Pending";
 
     await axios.put(
-      `https://ethara-ai-production-87f8.up.railway.app/api/tasks/${id}`,
+      `https://ethara-ai-production-cac0.up.railway.app/api/tasks/${id}`,
       { status: newStatus },
       {
         headers: {
@@ -89,7 +89,7 @@ export default function Dashboard() {
     e.preventDefault();
 
     await axios.put(
-      `https://ethara-ai-production-87f8.up.railway.app/api/tasks/${editId}`,
+      `https://ethara-ai-production-cac0.up.railway.app/api/tasks/${editId}`,
       { title, description },
       {
         headers: {

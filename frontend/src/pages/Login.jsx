@@ -11,7 +11,7 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       const res = await axios.post(
-        "https://ethara-ai-production-87f8.up.railway.app/api/auth/login",
+        "https://ethara-ai-production-cac0.up.railway.app/api/auth/login",
         { email, password }
       );
 

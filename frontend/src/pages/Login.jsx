@@ -1,7 +1,8 @@
 import { useState } from "react";
-import axios from "axios";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import API from "../api/axios";
+
 
 export default function Login() {
   const navigate = useNavigate();
@@ -10,10 +11,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post(
-        "https://ethara-ai-production-cac0.up.railway.app/api/auth/login",
-        { email, password }
-      );
+      const res = await API.post("/api/auth/login", { email, password });
 
       // store token
       localStorage.setItem("token", res.data.token);
@@ -67,3 +65,4 @@ export default function Login() {
     </div>
   );
 }
+console.log("BASE URL:", import.meta.env.VITE_API_BASE_URL);

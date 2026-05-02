@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../api/axios";
 import "./Dashboard.css";
 
 export default function Dashboard() {
@@ -19,7 +19,7 @@ export default function Dashboard() {
 
   // FETCH TASKS
   const fetchTasks = async () => {
-    const res = await axios.get("https://ethara-ai-production-cac0.up.railway.app/api/tasks", {
+    const res = await API.get("/api/tasks", {
       headers: {
         Authorization: "Bearer " + token
       }
@@ -31,8 +31,8 @@ export default function Dashboard() {
   const handleAddTask = async (e) => {
     e.preventDefault();
 
-    await axios.post(
-      "https://ethara-ai-production-cac0.up.railway.app/api/tasks",
+    await API.post(
+      "/api/tasks",
       { title, description, assignedTo: "Nihith" },
       {
         headers: {
@@ -46,26 +46,24 @@ export default function Dashboard() {
     fetchTasks();
   };
 
-  //DELETE TASK
+  // DELETE TASK
   const handleDelete = async (id) => {
-    await axios.delete(
-      `https://ethara-ai-production-cac0.up.railway.app/api/tasks/${id}`,
-      {
-        headers: {
-          Authorization: "Bearer " + token
-        }
+    await API.delete(`/api/tasks/${id}`, {
+      headers: {
+        Authorization: "Bearer " + token
       }
-    );
+    });
+
     fetchTasks();
   };
 
-  //UPDATE STATUS
+  // UPDATE STATUS
   const handleStatusChange = async (id, currentStatus) => {
     const newStatus =
       currentStatus === "Pending" ? "Completed" : "Pending";
 
-    await axios.put(
-      `https://ethara-ai-production-cac0.up.railway.app/api/tasks/${id}`,
+    await API.put(
+      `/api/tasks/${id}`,
       { status: newStatus },
       {
         headers: {
@@ -84,12 +82,12 @@ export default function Dashboard() {
     setDescription(task.description);
   };
 
-  //  UPDATE TASK
+  // UPDATE TASK
   const handleUpdateTask = async (e) => {
     e.preventDefault();
 
-    await axios.put(
-      `https://ethara-ai-production-cac0.up.railway.app/api/tasks/${editId}`,
+    await API.put(
+      `/api/tasks/${editId}`,
       { title, description },
       {
         headers: {
@@ -172,7 +170,7 @@ export default function Dashboard() {
 
             <button
               onClick={() => handleStatusChange(task._id, task.status)}
-                className="btn toggle-btn"
+              className="btn toggle-btn"
             >
               Toggle Status
             </button>
@@ -184,9 +182,10 @@ export default function Dashboard() {
               Delete
             </button>
 
-            <button onClick={() => handleEdit(task)} 
-                    className="btn edit-btn">
-
+            <button
+              onClick={() => handleEdit(task)}
+              className="btn edit-btn"
+            >
               Edit
             </button>
           </div>

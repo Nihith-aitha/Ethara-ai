@@ -12,10 +12,21 @@ const app = express();
 
 app.use(
   cors({
+    origin: [
+      "http://localhost:5175",
+      "http://localhost:5173",
+      "https://ethara-eeqqm9no9-nihith-aithas-projects.vercel.app"
+    ],
+    credentials: true
+  })
+);
+
+/*app.use(
+  cors({
     origin: "https://ethara-eeqqm9no9-nihith-aithas-projects.vercel.app",
     credentials: true,
   })
-);
+);*/
 
 app.use(express.json());
 

@@ -2,13 +2,21 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
+
 import authRoutes from "./routes/auth.js";
 import taskRoutes from "./routes/task.js";
 
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+app.use(
+  cors({
+    origin: "https://ethara-eeqqm9no9-nihith-aithas-projects.vercel.app",
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
@@ -18,9 +26,14 @@ app.get("/", (req, res) => {
   res.send("API running");
 });
 
-mongoose.connect(process.env.MONGO_URI)
-.then(() => {
-  console.log("MongoDB connected");
-  app.listen(5000, () => console.log("Server running on port 5000"));
-})
-.catch(err => console.log(err));
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("MongoDB connected");
+    app.listen(process.env.PORT || 5000, () => {
+      console.log("Server running");
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });

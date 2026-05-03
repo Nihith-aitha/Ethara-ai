@@ -10,6 +10,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
+    console.log("Login clicked");
     try {
       const res = await API.post("/api/auth/login", { email, password });
 

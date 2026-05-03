@@ -10,22 +10,9 @@ dotenv.config();
 
 const app = express();
 
-/*app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:5175",
-      "https://ethara-rbbkbbgcn-nihith-aithas-projects.vercel.app",
-      "https://ethara-eeqqm9no9-nihith-aithas-projects.vercel.app"
-    ],
-    credentials: true
-  })
-);*/
-
 app.use(
   cors({
-    origin: "*",
-  
+    origin: "*"
   })
 );
 
@@ -42,8 +29,12 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB connected");
-    app.listen(process.env.PORT || 5000, () => {
-      console.log("Server running");
+
+    const PORT = process.env.PORT || 5000;
+
+    // ✅ IMPORTANT CHANGE HERE
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Server running on port ${PORT}`);
     });
   })
   .catch((err) => {

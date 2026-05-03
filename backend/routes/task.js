@@ -22,7 +22,7 @@ router.delete("/:id", verifyToken, async (req, res) => {
   res.json({ message: "Deleted" });
 });
 
-// UPDATE TASK (edit title + description)
+
 router.put("/:id", verifyToken, async (req, res) => {
   try {
     const task = await Task.findByIdAndUpdate(
